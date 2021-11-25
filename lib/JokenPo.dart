@@ -139,11 +139,21 @@ class _JokenPoState extends State<JokenPo> {
     ];
     String resultado_computador =
         resultados_possiveis[Random().nextInt(resultados_possiveis.length)];
-    return Resultado(
-        "images/$resultado_computador.png",
-        ((resultado_computador == resultado)
-            ? "Você ganhou!"
-            : "Você perdeu!"));
+    if(resultado == JokenPO.TESOURA && resultado_computador == JokenPO.PAPEL){
+      return Resultado(
+          "images/$resultado_computador.png", "Você ganhou!");
+    }else if(resultado == JokenPO.PAPEL && resultado_computador == JokenPO.PEDRA){
+      return Resultado(
+          "images/$resultado_computador.png", "Você ganhou!");
+    }
+    else if(resultado == JokenPO.PEDRA && resultado_computador == JokenPO.TESOURA){
+      return Resultado(
+          "images/$resultado_computador.png", "Você ganhou!");
+    }
+    else{
+      return Resultado(
+          "images/$resultado_computador.png", "Você perdeu!");
+    }
   }
 }
 

@@ -73,7 +73,7 @@ class _JokenPoState extends State<JokenPo> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 32, right: 32),
+                  padding: EdgeInsets.only(left: 16, right: 16),
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(1)),
                     child: GestureDetector(

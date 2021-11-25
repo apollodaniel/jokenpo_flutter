@@ -41,7 +41,11 @@ class _JokenPoState extends State<JokenPo> {
                   ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(1)),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          _computer_choice_image = "images/padrao.png";
+                        });
+                      },
                       child: Image(
                         image: AssetImage(_computer_choice_image),
                         width: _jokenpo_image_size,

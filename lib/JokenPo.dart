@@ -40,9 +40,12 @@ class _JokenPoState extends State<JokenPo> {
                   Text("Jogada do computador: "),
                   ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(1)),
-                    child: Image(
-                      image: AssetImage(_computer_choice_image),
-                      width: _jokenpo_image_size,
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Image(
+                        image: AssetImage(_computer_choice_image),
+                        width: _jokenpo_image_size,
+                      ),
                     ),
                   ),
                 ],
@@ -55,23 +58,47 @@ class _JokenPoState extends State<JokenPo> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(1)),
-                  child: Image(
-                    image: AssetImage("images/papel.png"),
-                    width: _jokenpo_image_size,
+                  child: GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("Papel"),
+                        duration: Duration(seconds: 3),
+                      ));
+                    },
+                    child: Image(
+                      image: AssetImage("images/papel.png"),
+                      width: _jokenpo_image_size,
+                    ),
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(1)),
-                  child: Image(
-                    image: AssetImage("images/pedra.png"),
-                    width: _jokenpo_image_size,
+                  child: GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("Pedra"),
+                        duration: Duration(seconds: 3),
+                      ));
+                    },
+                    child: Image(
+                      image: AssetImage("images/pedra.png"),
+                      width: _jokenpo_image_size,
+                    ),
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(1)),
-                  child: Image(
-                    image: AssetImage("images/tesoura.png"),
-                    width: _jokenpo_image_size,
+                  child: GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("Tesoura"),
+                        duration: Duration(seconds: 3),
+                      ));
+                    },
+                    child: Image(
+                      image: AssetImage("images/tesoura.png"),
+                      width: _jokenpo_image_size,
+                    ),
                   ),
                 ),
               ],

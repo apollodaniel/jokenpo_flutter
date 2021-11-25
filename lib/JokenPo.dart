@@ -44,9 +44,7 @@ class _JokenPoState extends State<JokenPo> {
                     borderRadius: BorderRadius.all(Radius.circular(1)),
                     child: GestureDetector(
                       onTap: () {
-                        setState(() {
-                          _computer_choice_image = "images/padrao.png";
-                        });
+                        ResetGame();
                       },
                       child: Image(
                         image: AssetImage(_computer_choice_image),
@@ -120,6 +118,19 @@ class _JokenPoState extends State<JokenPo> {
       _computer_choice_image = resultado._resultado_imagem;
     });
   }
+
+  void ResetGame(){
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Game restarted!"),
+        duration: Duration(seconds: 3),
+    ));
+    setState(() {
+      _computer_choice_image = "images/padrao.png";
+    });
+  }
+
   Resultado Calcula_Resultado(String resultado) {
     List<String> resultados_possiveis = [
       JokenPO.TESOURA,

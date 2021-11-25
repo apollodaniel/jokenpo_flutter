@@ -123,7 +123,7 @@ class _JokenPoState extends State<JokenPo> {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Game restarted!"),
+        content: Text("Jogo reiniciado!"),
         duration: Duration(seconds: 3),
     ));
     setState(() {
@@ -149,6 +149,10 @@ class _JokenPoState extends State<JokenPo> {
     else if(resultado == JokenPO.PEDRA && resultado_computador == JokenPO.TESOURA){
       return Resultado(
           "images/$resultado_computador.png", "Você ganhou!");
+    }
+    else if(resultado == resultado_computador){
+      return Resultado(
+          "images/$resultado_computador.png", "Houve um empate!");
     }
     else{
       return Resultado(

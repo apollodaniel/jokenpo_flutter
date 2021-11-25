@@ -8,6 +8,25 @@ class JokenPo extends StatefulWidget {
 class _JokenPoState extends State<JokenPo> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("JokenPO"),
+      ),
+      body: Center(
+        child: Container(
+          child: Column(
+            children: [
+              Column(
+
+              ),
+              Text(""),
+              Row(
+
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

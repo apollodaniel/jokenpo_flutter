@@ -72,15 +72,18 @@ class _JokenPoState extends State<JokenPo> {
                     ),
                   ),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(1)),
-                  child: GestureDetector(
-                    onTap: () {
-                      ImageClick(JokenPO.PEDRA);
-                    },
-                    child: Image(
-                      image: AssetImage("images/pedra.png"),
-                      width: _jokenpo_image_size,
+                Padding(
+                  padding: EdgeInsets.only(left: 32, right: 32),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(1)),
+                    child: GestureDetector(
+                      onTap: () {
+                        ImageClick(JokenPO.PEDRA);
+                      },
+                      child: Image(
+                        image: AssetImage("images/pedra.png"),
+                        width: _jokenpo_image_size,
+                      ),
                     ),
                   ),
                 ),

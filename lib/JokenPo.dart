@@ -66,14 +66,7 @@ class _JokenPoState extends State<JokenPo> {
                   borderRadius: BorderRadius.all(Radius.circular(1)),
                   child: GestureDetector(
                     onTap: () {
-                      Resultado resultado = Calcula_Resultado(JokenPO.PAPEL);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(resultado._resultado),
-                        duration: Duration(seconds: 3),
-                      ));
-                      setState(() {
-                        _computer_choice_image = resultado._resultado_imagem;
-                      });
+                      ImageClick(JokenPO.PAPEL);
                     },
                     child: Image(
                       image: AssetImage("images/papel.png"),
@@ -85,14 +78,7 @@ class _JokenPoState extends State<JokenPo> {
                   borderRadius: BorderRadius.all(Radius.circular(1)),
                   child: GestureDetector(
                     onTap: () {
-                      Resultado resultado = Calcula_Resultado(JokenPO.PEDRA);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(resultado._resultado),
-                        duration: Duration(seconds: 3),
-                      ));
-                      setState(() {
-                        _computer_choice_image = resultado._resultado_imagem;
-                      });
+                      ImageClick(JokenPO.PEDRA);
                     },
                     child: Image(
                       image: AssetImage("images/pedra.png"),
@@ -104,14 +90,7 @@ class _JokenPoState extends State<JokenPo> {
                   borderRadius: BorderRadius.all(Radius.circular(1)),
                   child: GestureDetector(
                     onTap: () {
-                      Resultado resultado = Calcula_Resultado(JokenPO.TESOURA);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(resultado._resultado),
-                        duration: Duration(seconds: 3),
-                      ));
-                      setState(() {
-                        _computer_choice_image = resultado._resultado_imagem;
-                      });
+                      ImageClick(JokenPO.TESOURA);
                     },
                     child: Image(
                       image: AssetImage("images/tesoura.png"),
@@ -130,7 +109,17 @@ class _JokenPoState extends State<JokenPo> {
       )),
     );
   }
-
+  void ImageClick(String clique){
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    Resultado resultado = Calcula_Resultado(clique);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(resultado._resultado),
+      duration: Duration(seconds: 3),
+    ));
+    setState(() {
+      _computer_choice_image = resultado._resultado_imagem;
+    });
+  }
   Resultado Calcula_Resultado(String resultado) {
     List<String> resultados_possiveis = [
       JokenPO.TESOURA,

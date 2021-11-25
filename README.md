@@ -1,16 +1,16 @@
-# joken_po
+# JokenPO
 
-Projeto JokenPo flutter
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
 
-## Getting Started
+JokenPO app using flutter
 
-This project is a starting point for a Flutter application.
+# Draw
+![Empate](src/print1.png)
 
-A few resources to get you started if this is your first Flutter project:
+# Win
+![Empate](src/print2.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# Lost
+![Empate](src/print1.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

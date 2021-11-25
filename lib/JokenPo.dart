@@ -15,6 +15,7 @@ class _JokenPoState extends State<JokenPo> {
   var screen_height;
 
   int _jokenpo_image_scaling_factor = 32;
+  int player_score = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +40,17 @@ class _JokenPoState extends State<JokenPo> {
               padding: EdgeInsets.only(bottom: 32),
               child: Column(
                 children: [
+                  Text("Score: $player_score"),
                   Text("Jogada do computador: "),
                   ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(1)),
                     child: GestureDetector(
                       onTap: () {
                         ResetGame();
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Jogo reiniciado!"),
+                          duration: Duration(seconds: 3),
+                        ));
                       },
                       child: Image(
                         image: AssetImage(_computer_choice_image),
@@ -110,7 +116,8 @@ class _JokenPoState extends State<JokenPo> {
       )),
     );
   }
-  void ImageClick(String clique){
+
+  void ImageClick(String clique) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     Resultado resultado = Calcula_Resultado(clique);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -122,15 +129,11 @@ class _JokenPoState extends State<JokenPo> {
     });
   }
 
-  void ResetGame(){
+  void ResetGame() {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Jogo reiniciado!"),
-        duration: Duration(seconds: 3),
-    ));
     setState(() {
       _computer_choice_image = "images/padrao.png";
+      player_score = 0;
     });
   }
 
@@ -142,24 +145,38 @@ class _JokenPoState extends State<JokenPo> {
     ];
     String resultado_computador =
         resultados_possiveis[Random().nextInt(resultados_possiveis.length)];
-    if(resultado == JokenPO.TESOURA && resultado_computador == JokenPO.PAPEL){
-      return Resultado(
-          "images/$resultado_computador.png", "Você ganhou!");
-    }else if(resultado == JokenPO.PAPEL && resultado_computador == JokenPO.PEDRA){
-      return Resultado(
-          "images/$resultado_computador.png", "Você ganhou!");
-    }
-    else if(resultado == JokenPO.PEDRA && resultado_computador == JokenPO.TESOURA){
-      return Resultado(
-          "images/$resultado_computador.png", "Você ganhou!");
-    }
-    else if(resultado == resultado_computador){
-      return Resultado(
-          "images/$resultado_computador.png", "Houve um empate!");
-    }
-    else{
-      return Resultado(
-          "images/$resultado_computador.png", "Você perdeu!");
+
+
+    setState(() {
+      player_score ++;
+    });
+
+    if (resultado == JokenPO.TESOURA && resultado_computador == JokenPO.PAPEL) {
+      return Resultado("images/$resultado_computador.png", "Você ganhou!");
+    } else if (resultado == JokenPO.PAPEL &&
+        resultado_computador == JokenPO.PEDRA) {
+      return Resultado("images/$resultado_computador.png", "Você ganhou!");
+    } else if (resultado == JokenPO.PEDRA &&
+        resultado_computador == JokenPO.TESOURA) {
+      return Resultado("images/$resultado_computador.png", "Você ganhou!");
+    } else if (resultado == resultado_computador) {
+      setState(() {
+        player_score --;
+      });
+      return Resultado("images/$resultado_computador.png", "Houve um empate!");
+    } else {
+      if(player_score - 2 < 0){
+        ResetGame();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Você perdeu!"),
+          duration: Duration(seconds: 3),
+        ));
+      }else{
+        setState(() {
+          player_score -= 2;
+        });
+      }
+      return Resultado("images/$resultado_computador.png", "Você perdeu!");
     }
   }
 }
